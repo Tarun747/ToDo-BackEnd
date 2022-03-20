@@ -10,7 +10,8 @@ const createTodo = async (req, res, next) => {
   try {
     const { data } = req.body
     const todoData = await ToDoModel.find({})
-    if (data.length > 0) {
+
+    if (data.length > 0 || todoData.length > 0) {
       await ToDoModel.findOneAndUpdate(
         { _id: todoData[0]._id },
         { data: data },
